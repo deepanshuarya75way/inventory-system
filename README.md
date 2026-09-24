@@ -125,14 +125,6 @@ A production-ready full-stack web application built for **Ethara.AI** to manage 
 
 ---
 
-## Quick Start (Docker)
-
-```bash
-git clone https://github.com/drooph0904/inventory-system.git
-cd inventory-system
-cp .env.example .env   # set your own passwords
-docker compose up --build
-```
 
 - Frontend: http://localhost:3000
 - API: http://localhost:8000
@@ -150,7 +142,7 @@ python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
-export DATABASE_URL=postgresql+asyncpg://inventoryuser:devpassword123@localhost:5432/inventorydb
+export DATABASE_URL=postgresql+asyncpg://postgres:1234@localhost:5432/inventorydb
 export CORS_ORIGINS=http://localhost:3000
 
 uvicorn main:app --reload --port 8000
@@ -213,22 +205,7 @@ psql "$DATABASE_URL" -f backend/migrations/init.sql
 
 ---
 
-## Docker Hub
 
-```bash
-# Backend
-docker build -t drooph0904/inventory-backend:latest ./backend
-docker push drooph0904/inventory-backend:latest
-
-# Frontend
-docker build \
-  --build-arg REACT_APP_API_URL=https://inventory-system-56zd.onrender.com \
-  -t drooph0904/inventory-frontend:latest \
-  ./frontend
-docker push drooph0904/inventory-frontend:latest
-```
-
----
 
 ## Project Structure
 
